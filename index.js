@@ -28,6 +28,7 @@ const startCLI = () => {
 
     // printSuccess('ok')
     // printError('no ok')
+    // console.log(process.env)
     if(args.h) {
         // help
         printHelp()
@@ -41,7 +42,7 @@ const startCLI = () => {
         return saveToken(args.t)
     }
     // result
-    getWeather('Uzbekistan')
+    getWeather(process.env.CITY ?? 'Uzbekistan')
 }
 
 startCLI()
