@@ -4,6 +4,11 @@ import fs from 'fs'
 
 const filePath = path.join(path.join(os.homedir(), 'weather-date.json'))
 
+const TOKEN_DICTIONARY = {
+    token: 'token',
+    city: 'city',
+}
+
 const saveKeyValue = async (key, value) => {
     // console.log(path.join(os.homedir(), 'weather-date.json'))
     let data = {}
@@ -20,7 +25,7 @@ const saveKeyValue = async (key, value) => {
 const getKeyValue = async key => {
     if(await isExist(filePath)) {
         const file = await fs.promises.readFile(filePath)
-        const date = JSON.parse(file)
+        const data = JSON.parse(file)
         return data[key]
     }
 
@@ -36,4 +41,4 @@ const isExist = async path => {
     }
 }
 
-export {saveKeyValue, getKeyValue}
+export {saveKeyValue, getKeyValue, TOKEN_DICTIONARY}
